@@ -2,5 +2,6 @@
     <string name="app_name">TODO or Not TODO</string>
     <string name="ListName_title">To Do Lists</string>
     <string name="ListName_NewButton">New List</string>
+    <string name="ListItem_NewButton">New Item</string>
     <string name="ListName_InputText">List Name</string>
 </resources>

@@ -6,9 +6,12 @@ public class ListName {
 
     //constructor
     public ListName(){}
-    public ListName(int id, String listName) {
+    public ListName(String listName) {
+        this.name = listName;
+    }
+    public ListName(int id,String listName) {
         this.id = id;
-        this.name = name;
+        this.name = listName;
     }
 
     public int getId() {

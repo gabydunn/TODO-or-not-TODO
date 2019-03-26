@@ -12,12 +12,12 @@ import java.util.List;
 public class DBManager extends SQLiteOpenHelper
 {
     static final String DB_Name = "todo.db";
-    static final int DB_VERSION = 2;
+    static final int DB_VERSION = 5;
 
     //table names
 
     private static String TABLE_LISTITEM = "ListItem";
-    private static String TABLE_LISTNAME = "ListName";
+    private static String TABLE_LISTNAME = "Name";
 
     //Common column names
     private static String PK_ID = "id";
@@ -143,7 +143,7 @@ public class DBManager extends SQLiteOpenHelper
     {
         SQLiteDatabase db = getReadableDatabase();
         List<ListName> listnames = new ArrayList<>();
-        Cursor cursor = db.query(TABLE_LISTITEM,null, null, null,null,null, LISTNAME_NAME + " DESC");
+        Cursor cursor = db.query(TABLE_LISTNAME,null, null, null,null,null, LISTNAME_PKID + " DESC");
         while (cursor.moveToNext())
         {
             ListName newList = new ListName();
