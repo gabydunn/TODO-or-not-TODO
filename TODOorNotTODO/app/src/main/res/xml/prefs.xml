@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditTextPreference
+        android:key="user_name"
+        android:summary="Change your screen name"
+        android:title="@string/oscar_category_UsernameTitle"/>
+    <EditTextPreference
+        android:key="password"
+        android:title="Password"
+        android:summary="Change your password: not recommended"
+        android:defaultValue="oscar275"/>
+    <com.rarepebble.colorpicker.ColorPreference
+        android:key="BG_Colour"
+        android:title="Background Colour"
+        android:defaultValue="@color/colorTestBG"/>
+
+
+
+</PreferenceScreen>

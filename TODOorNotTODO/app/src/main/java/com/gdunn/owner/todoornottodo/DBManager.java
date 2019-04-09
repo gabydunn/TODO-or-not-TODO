@@ -7,12 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DBManager extends SQLiteOpenHelper
 {
     static final String DB_Name = "todo.db";
-    static final int DB_VERSION = 5;
+    static final int DB_VERSION = 9;
 
     //table names
 
@@ -59,23 +60,41 @@ public class DBManager extends SQLiteOpenHelper
         //public long CreateList
     public long CreateListItem(ListItem listitem)
     {
+
         SQLiteDatabase db = getWritableDatabase();
         //used to store a set of values that the ContentResolver can process.
         ContentValues values = new ContentValues();
         values.put(LISTITEM_CONTENT, listitem.getContent());
         values.put(LISTITEM_STATUS, listitem.getStatus());
         values.put(LISTITEM_FK, listitem.getListIdFK());
-        values.put(LISTITEM_DATE, listitem.getCreatedDate().toString());
+        values.put(LISTITEM_DATE,listitem.getCreatedDate());
 
         long itemID = db.insert(TABLE_LISTITEM,null,values);
 
         return itemID;
     }
+    //public Listitem GetListItemByItemID
+    public ListItem GetListItemByItemID(int listitemid)
+    {
+        SQLiteDatabase db = getReadableDatabase();
+        String whereClause = LISTITEM_PKID+ " = "+listitemid;
+        ListItem oneItem = new ListItem();
+        Cursor cursor = db.query(TABLE_LISTITEM, null,whereClause,null,null,null,null,null);
+        while (cursor.moveToNext())
+        {
+            oneItem.setId(cursor.getInt(cursor.getColumnIndex(LISTITEM_PKID)));
+            oneItem.setStatus(cursor.getInt(cursor.getColumnIndex(LISTITEM_STATUS)));
+            oneItem.setContent(cursor.getString(cursor.getColumnIndex(LISTITEM_CONTENT)));
+            oneItem.setListIdFK(cursor.getInt(cursor.getColumnIndex(LISTITEM_FK)));
+            oneItem.setCreatedDate(cursor.getString(cursor.getColumnIndex(LISTITEM_DATE)));
+        }
+        return oneItem;
+    }
     //public List<ListItem> GetListItemsByID
     public List<ListItem> GetListItemsByID(int listid)
     {
         SQLiteDatabase db = getReadableDatabase();
-        String whereClause = "WHERE " + LISTITEM_FK + " = " + listid;
+        String whereClause =  LISTITEM_FK + " = " + listid;
         List<ListItem> itemlist = new ArrayList<ListItem>();
         Cursor cursor = db.query(TABLE_LISTITEM,null, whereClause, null,null,null, LISTITEM_CONTENT + " DESC");
         while(cursor.moveToNext())
@@ -85,6 +104,7 @@ public class DBManager extends SQLiteOpenHelper
             cItem.setContent(cursor.getString((cursor.getColumnIndex(LISTITEM_CONTENT))));
             cItem.setStatus(cursor.getInt((cursor.getColumnIndex(LISTITEM_STATUS))));
             cItem.setListIdFK(cursor.getInt((cursor.getColumnIndex(LISTITEM_FK))));
+            cItem.setCreatedDate(cursor.getString(cursor.getColumnIndex(LISTITEM_DATE)));
             itemlist.add(cItem);
         }
         cursor.close();
@@ -99,7 +119,7 @@ public class DBManager extends SQLiteOpenHelper
         values.put(LISTITEM_CONTENT, item.getContent());
         values.put(LISTITEM_STATUS, item.getStatus());
         values.put(LISTITEM_FK, item.getListIdFK());
-        values.put(LISTITEM_DATE, item.getCreatedDate().toString());
+        values.put(LISTITEM_DATE, item.getCreatedDate());
 
         return db.update(TABLE_LISTITEM, values, LISTITEM_PKID + " =?",
                 new String[] {String.valueOf(item.getId())});
@@ -153,5 +173,19 @@ public class DBManager extends SQLiteOpenHelper
         }
         cursor.close();
         return listnames;
+    }
+    //Get one List
+    public ListName GetListNameByItemID(int listNameId)
+    {
+        SQLiteDatabase db = getReadableDatabase();
+        String whereClause = LISTNAME_PKID+ " = "+listNameId;
+        ListName oneItem = new ListName();
+        Cursor cursor = db.query(TABLE_LISTNAME, null,whereClause,null,null,null,null,null);
+        while (cursor.moveToNext())
+        {
+            oneItem.setId(cursor.getInt(cursor.getColumnIndex(LISTNAME_PKID)));
+            oneItem.setListName(cursor.getString(cursor.getColumnIndex(LISTNAME_NAME)));
+        }
+        return oneItem;
     }
 }

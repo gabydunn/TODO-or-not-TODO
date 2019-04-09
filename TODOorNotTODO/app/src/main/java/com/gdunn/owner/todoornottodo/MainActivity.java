@@ -1,6 +1,10 @@
 package com.gdunn.owner.todoornottodo;
 
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +19,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 private RecyclerView recyclerView;
 private recyclerAdapter mAdapter;
 private RecyclerView.LayoutManager layoutManager;
@@ -42,6 +46,11 @@ private EditText newListName;
 
         createListNameButton = findViewById(R.id.button_newList);
         createListNameButton.setOnClickListener(this);
+
+
+
+
+
     }
 
 
@@ -58,8 +67,7 @@ private EditText newListName;
                 }
                 else{
                     ListName newcard = new ListName(newlist);
-                    long newcardid = dbHelper.CreateList(newcard);
-                    //lists.clear();
+                    long newcardid = manager.CreateList(newcard);
                     refreshAdapter();
                     newListName.setText("");
                     Toast.makeText(this, newlist+ " added!", Toast.LENGTH_LONG).show();
@@ -72,8 +80,10 @@ private EditText newListName;
     public void refreshAdapter()
     {
         lists.clear();
-        lists = dbHelper.GetLists();
+        lists = manager.GetLists();
         mAdapter = new recyclerAdapter(getApplicationContext(), lists);
         recyclerView.setAdapter(mAdapter);
     }
+
+
 }

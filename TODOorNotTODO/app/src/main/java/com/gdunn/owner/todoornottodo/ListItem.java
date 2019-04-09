@@ -1,16 +1,28 @@
 package com.gdunn.owner.todoornottodo;
 
 import java.util.Date;
+import java.util.List;
 
 public class ListItem {
     private int id;
     private String content;
     private int listIdFK;
     private int status;
-    private Date createdDate;
+    private String createdDate;
 
+    public ListItem(){}
+    public ListItem(String content, int listidfk, int status, String createdDate )
+    {
+        this.content = content;
+        this.listIdFK = listidfk;
+        this.status = status;
+        this.createdDate = createdDate;
+    }
 
-    public Date getCreatedDate() {
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+    public String getCreatedDate() {
         return createdDate;
     }
 
@@ -45,4 +57,5 @@ public class ListItem {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

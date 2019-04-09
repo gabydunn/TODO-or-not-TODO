@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/archive_parent">
+    <RelativeLayout
+        android:id="@+id/archive_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/archive_card_color"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/archive_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="place holder date text"
+            android:textSize="17sp"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/archive_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="105dp"
+            android:layout_toEndOf="@id/archive_date"
+            android:text="incomplete"
+            android:textSize="17sp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_below="@+id/archive_date"
+            android:id="@+id/archive_listName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="place holder"
+            android:textSize="20sp" />
+        <TextView
+            android:background="#2DC2BD"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/archive_listName"
+            android:id="@+id/archive_listContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="content place holder"
+            android:textSize="20sp" />
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

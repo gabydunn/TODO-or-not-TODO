@@ -3,4 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorTestBG">#FF5E5B</color>
+    <color name="archive_card_color">#7A82AB</color>
 </resources>

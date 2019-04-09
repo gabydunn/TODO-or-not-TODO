@@ -1,22 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mostpart_Layout">
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F2CC8F"
     android:padding="15dp"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="5dp"
+    android:id="@+id/relative_fragment_listitem"
+    android:focusableInTouchMode="true">
+
     <TextView
         android:id="@+id/textview_listitem"
-        android:layout_width="350dp"
+        android:layout_width="241dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
         android:text="sometext"
-        android:textSize="25sp"
-        />
+        android:textSize="25sp" />
     <CheckBox
+        android:id="@+id/listitem_checkbox"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/textview_listitem"
         android:layout_marginStart="5dp"
+        android:checked="false"
+
         />
+
+    <Button
+        android:id="@+id/listitem_archive"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_listitem"
+        android:layout_marginTop="30dp"
+        android:text="Archive"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/listitem_delete"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_listitem"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/listitem_archive"
+        android:text="Delete"
+        android:textAllCaps="false" />
+
 </RelativeLayout>
+</LinearLayout>

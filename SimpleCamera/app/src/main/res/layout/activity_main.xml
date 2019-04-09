@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallpaper manager"
+        android:minHeight="20dp"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_find_image"
+                android:onClick="onButtonClick"
+                android:text="Find"
+                android:layout_weight=".5"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_take_image"
+                android:onClick="onButtonClick"
+                android:text="Camera"
+                android:layout_weight=".5"
+                />
+        </TableRow>
+    </TableLayout>
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".7"/>
+    <Button
+        android:id="@+id/imageview_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
+        android:text="Set as wallpaper"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>
